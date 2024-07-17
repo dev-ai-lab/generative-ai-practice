@@ -1,6 +1,4 @@
-# AI, Machine Learning and Python
-## AI
-## Machine Learning
+# AI, Machine Learning using Python
 ## Python Basics
 - uses dynamic typing
 - `a = 1 + 1` and `type(a)`
@@ -866,6 +864,46 @@ except (Exception, pg.Error) as error:
 [6] data[0][4]
 [7dCo] connection.close()
 ```
+
+## AI
+### Reinforcement Learning
+[Simple Reinforcement Learning with Tensorflow](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0)
+#### Ballman Equation
+- s - state
+- a - action
+- R - Reward
+- y - Discount
+
+#### Markov Decision Process (MDP)
+- additional [references](https://www.it.uu.se/edu/course/homepage/aism/st11/MDPApplications3.pdf)
+#### Policy vs Plan
+- Plan is fixed
+  - Bellman's equation
+- Policy is just a guideline - randomness expected
+  - MDP equation
+  - Different board of values than Bellman board
+#### Living Penalty of the agent
+- Agent is forced to complete fast as each move accumulates negative awards
+- (-0.04) It changes the board of values in two blocks near fire
+- (-0.5, -2) It changes the board of values substantially
+#### Q-Learning (value of actions)
+- Instead value of state, it uses quality of action (or action)
+- Quantifies actions `Q(s,a)`
+
+![Q-learning](https://github.com/dev-ai-lab/generative-ai-practice/blob/master/media/q-learning.png?raw=1)
+#### Temporal Difference (How AI updates itself)
+
+#### Deep Q-Learning Intuition
+- Q-learning intuition (Learning)
+- Q-learning intuition (Acting)
+- Experience Replay
+- Action Selection Policies
+
+### Links
+- Code [books](https://colab.research.google.com/github/dev-ai-lab/generative-ai-practice/blob/master/query-chatgpt.ipynb#scrollTo=x6rWnc6uuFMZ&line=36&uniqifier=1)
+- Github [Repos](https://)
+
+## Machine Learning
 
 ## Resources Links
 - Training github repo [here](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp.git)
