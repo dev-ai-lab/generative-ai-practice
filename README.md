@@ -34,11 +34,14 @@
       * [Policy vs Plan](#policy-vs-plan)
       * [Living Penalty of the agent](#living-penalty-of-the-agent)
       * [Q-Learning (value of actions)](#q-learning-value-of-actions)
+        * [Additional Reading](#additional-reading)
       * [Temporal Difference (How AI updates itself)](#temporal-difference-how-ai-updates-itself)
       * [Deep Q-Learning Intuition](#deep-q-learning-intuition)
+      * [Deep Convolutional Q-Learning](#deep-convolutional-q-learning)
     * [Links](#links)
-  * [Machine Learning](#machine-learning)
-  * [Resources Links](#resources-links)
+    * [Machine Learning](#machine-learning)
+    * [Multi-modal embedding space math - AWS](#multi-modal-embedding-space-math---aws)
+    * [Resources Links](#resources-links)
 <!-- TOC -->
 ## Python Basics
 - uses dynamic typing
@@ -907,6 +910,10 @@ except (Exception, pg.Error) as error:
 ```
 
 ## AI
+- There are three kinds of machine learning
+  - Supervised learning
+  - Unsupervised learning
+  - Reinforcement learning: challenge specific to this is trade-off between exploration and exploitation
 ### Reinforcement Learning
 [Simple Reinforcement Learning with Tensorflow](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0)
 #### Ballman Equation
@@ -917,35 +924,94 @@ except (Exception, pg.Error) as error:
 
 #### Markov Decision Process (MDP)
 - additional [references](https://www.it.uu.se/edu/course/homepage/aism/st11/MDPApplications3.pdf)
+- It includes just these three aspects:
+  - sensation
+  - action
+  - goal
+- Reinforcement Learning vs Supervised Learning
+  - Supervised L is learning from a training set of labelled examples provided by knowledgeable external supervisor
 #### Policy vs Plan
-- Plan is fixed
+- Plan is fixed and directions are fixed
   - Bellman's equation
-- Policy is just a guideline - randomness expected
+- Policy is just a guideline - randomness expected (stochastic env.)
   - MDP equation
   - Different board of values than Bellman board
 #### Living Penalty of the agent
 - Agent is forced to complete fast as each move accumulates negative awards
+- It is rewarded throughout the process instead of just at the end (+1, -1)
 - (-0.04) It changes the board of values in two blocks near fire
 - (-0.5, -2) It changes the board of values substantially
 #### Q-Learning (value of actions)
 - Instead value of state, it uses quality of action (or action)
 - Quantifies actions `Q(s,a)`
 
-![Q-learning](https://github.com/dev-ai-lab/generative-ai-practice/blob/master/media/q-learning.png?raw=1)
+![q-learning](media/q-learning.png)
+##### Additional Reading
+- Markov Decision Processes: Concepts and Algorithms by Martijn van Otterlo (2009)
 #### Temporal Difference (How AI updates itself)
+![q-learning Temporal Difference](media/q-learning-temporal-difference.png)
 
 #### Deep Q-Learning Intuition
 - Q-learning intuition (Learning)
 - Q-learning intuition (Acting)
+  - Q values calculated, using comparing and calculating the loss, propagating the error and it would remain fixed
+  - Learning --> acting (next step)
+  - Neural networks: We feed in the reinforcement learning problem into the neural network through a vector describing the state we are in
+    then happens the learning ()
+![learning-equation.png](media/learning-equation.png)
+
+![neural-networks-graph.jpg](media/neural-networks-graph.jpg)
+
 - Experience Replay
-- Action Selection Policies
+  - example of car moving in the street
+  - car makes move, new state, propagate in the network, key values and errors calculated and back propagated, weights updated, then cars selects which action to take, ends up in new state and the cycle starts again
+  - It takes a uniformly distributed sample from the batch of experiences it saved in memory: `state-1, action, state-2, reward`
+  - There are also special/rare experiences (i.e sharp corners)
+  - experience replay helps learn faster especially when experiences are limited
+  - Prioritize Experience [Replay](https://arxiv.org/pdf/1511.05952): explore uniform distribution for experience replay
+- Action Selection Policies: uses exploration and exploitation.
+  - Different action selection policies: 
+  - Why different policies: boils down to `Exploration vs Exploitation` which are the core of re-enforcement learning
+  - Local maximum, what if another Q is better?!?
+  - A policy might keep the agent learning and not stuck somewhere. S. Policies:
+    - Epsilon-Greedy: select the one with the best value, except the Epsilon percent of the time i.e E = 10%, 10 percent will be just random (exploration)
+    - Epsilon-soft (1 - Epsilon): Opposite. 10 percent select best Q and 90% time just randomly
+    - Softmax: Vector and Convolutional neural n/w. Output of softmax will be between 0 and 1. We pick up the highest output (probabilities). Sometimes we might pick up a lower value for exploration purpose. Learn from experience
+  - Further reading [here](https://tokic.com/www/tokicm/publikationen/papers/AdaptiveEpsilonGreedyExploration.pdf)
+![neural networks](media/neural-networks.png)
 
+####  Deep Convolutional Q-Learning
+- Is simply adding a convolutional neural network to the deep q-learning so that:
+  - AI can see images, which will be the inputs of the whole neural n/w (convolutional n/w --> neural network)
+- Discussed here:
+  - Deep convolutional q-learning intuition
+  - Eligibility Trace (N-step Q-learning)
+- To strengthen the theory, refer to these:
+  - Richard S. Sutton and Andrew G. Barto 1998 Reinforcement Learning: [An Introduction](http://incompleteideas.net/book/RLbook2020.pdf)
+  - Volodymyr Mnih et al. 2016, Asynchronous Methods for Deep RL
+- RL two distinguishing features:
+  - trial-and-error search
+  - delayed reward
+- In reality, we can't feed the state vector at input layer. The agent has to see the environment itself.
+- Agent has to process the images the environment is supplying to the agent, the same as human.
+![conv-deep-q-learning-nw.jpg](media/conv-deep-q-learning-nw.jpg)
 ### Links
-- Code [books](https://colab.research.google.com/github/dev-ai-lab/generative-ai-practice/blob/master/query-chatgpt.ipynb#scrollTo=x6rWnc6uuFMZ&line=36&uniqifier=1)
-- Github [Repos](https://)
-
-## Machine Learning
-
-## Resources Links
-- Training github repo [here](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp.git)
+- Code from A-Z [course](https://drive.google.com/drive/u/0/folders/15dfDBwqC-3mMw6luTz11V00SBggDVQPH)
 - 
+### Machine Learning
+
+
+### Multi-modal embedding space math - AWS
+![Multi-modal](media/multi-modal.png)
+- Example
+  - chap [10](https://github.com/generative-ai-on-aws/generative-ai-on-aws/tree/main/10_multimodal)
+  - Weaviate [example](https://github.com/generative-ai-on-aws/generative-ai-on-aws/blob/main/10_multimodal/11_multimodal_rag_weaviate.ipynb)
+    - search dog with stick --> get image, video, sound
+  - Text to video startup introduction
+
+### Resources Links
+- [Reference](https://awjuliani.medium.com/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0) reading about deep learning:
+- Training github repo [here](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp.git)
+- [Simple Reinforcement Learning with Tensorflow](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0)
+- Multi-modal [embedding](https://github.com/mlfoundations/open_clip) : (text,image), (text,video), (audio, image). No real training data
+- Generative AI on [AWS](https://www.amazon.de/Generative-AWS-Context-Aware-Multimodal-Applications/dp/1098159225) 
