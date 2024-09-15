@@ -949,7 +949,7 @@ except (Exception, pg.Error) as error:
 ##### Additional Reading
 - Markov Decision Processes: Concepts and Algorithms by Martijn van Otterlo (2009)
 #### Temporal Difference (How AI updates itself)
-![q-learning Temporal Difference](media/q-learning-temporal-difference.png)
+![q-learning Temporal Difference](media/q-learning-temporal-difference-2.png)
 
 #### Deep Q-Learning Intuition
 - Q-learning intuition (Learning)
