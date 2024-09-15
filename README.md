@@ -945,7 +945,7 @@ except (Exception, pg.Error) as error:
 - Instead value of state, it uses quality of action (or action)
 - Quantifies actions `Q(s,a)`
 
-![q-learning](media/q-learning-2.png)
+![q-learning](media/q-learning.png)
 ##### Additional Reading
 - Markov Decision Processes: Concepts and Algorithms by Martijn van Otterlo (2009)
 #### Temporal Difference (How AI updates itself)
