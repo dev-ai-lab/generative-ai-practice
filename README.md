@@ -1,49 +1,44 @@
 # AI, Machine Learning using Python
 <!-- TOC -->
-* [AI, Machine Learning using Python](#ai-machine-learning-using-python)
-  * [Python Basics](#python-basics)
-      * [list](#list)
-      * [dictionary](#dictionary)
-      * [tuples](#tuples)
-      * [sets](#sets)
-      * [boolean](#boolean)
-      * [I/O with Basic files](#io-with-basic-files)
-      * [Control flow and loop](#control-flow-and-loop)
-      * [Methods and functions](#methods-and-functions)
-      * [OOPS in Python](#oops-in-python)
-        * [Inheritance and Polymorphism](#inheritance-and-polymorphism)
-        * [Magic/Dunder methods](#magicdunder-methods)
-      * [Modules and packages](#modules-and-packages)
-      * [Error and Exception Handling](#error-and-exception-handling)
-      * [Python Unit Testing](#python-unit-testing)
-      * [Python Decorator](#python-decorator)
-      * [Python Generator](#python-generator)
-      * [Advanced Python Modules](#advanced-python-modules)
-      * [Web scraping - downloading images etc](#web-scraping---downloading-images-etc)
-      * [Working with Images in Python](#working-with-images-in-python)
-      * [Working with PDFs and Spreadsheet CSV](#working-with-pdfs-and-spreadsheet-csv)
-      * [Email with Python](#email-with-python)
-      * [Advanced Python Objects](#advanced-python-objects)
-      * [GUIs in python](#guis-in-python)
-      * [Final Capstone Project](#final-capstone-project)
-    * [Python Setup](#python-setup)
-  * [AI](#ai)
-    * [Reinforcement Learning](#reinforcement-learning)
-      * [Ballman Equation](#ballman-equation)
-      * [Markov Decision Process (MDP)](#markov-decision-process-mdp)
-      * [Policy vs Plan](#policy-vs-plan)
-      * [Living Penalty of the agent](#living-penalty-of-the-agent)
-      * [Q-Learning (value of actions)](#q-learning-value-of-actions)
-        * [Additional Reading](#additional-reading)
-      * [Temporal Difference (How AI updates itself)](#temporal-difference-how-ai-updates-itself)
-      * [Deep Q-Learning Intuition](#deep-q-learning-intuition)
-      * [Deep Convolutional Q-Learning](#deep-convolutional-q-learning)
-    * [Links](#links)
-    * [Machine Learning](#machine-learning)
-    * [Multi-modal embedding space math - AWS](#multi-modal-embedding-space-math---aws)
-    * [Resources Links](#resources-links)
+* [Python Basics](#python-basics)
+  * [list](#list)
+  * [dictionary](#dictionary)
+  * [tuples](#tuples)
+  * [sets](#sets)
+  * [boolean](#boolean)
+  * [I/O with Basic files](#io-with-basic-files)
+  * [Control flow and loop](#control-flow-and-loop)
+  * [Methods and functions](#methods-and-functions)
+  * [OOPS in Python](#oops-in-python)
+  * [Modules and packages](#modules-and-packages)
+  * [Error and Exception Handling](#error-and-exception-handling)
+  * [Python Unit Testing](#python-unit-testing)
+  * [Python Decorator](#python-decorator)
+  * [Python Generator](#python-generator)
+  * [Advanced Python Modules](#advanced-python-modules)
+  * [Web scraping - downloading images etc](#web-scraping---downloading-images-etc)
+  * [Working with Images in Python](#working-with-images-in-python)
+  * [Working with PDFs and Spreadsheet CSV](#working-with-pdfs-and-spreadsheet-csv)
+  * [Email with Python](#email-with-python)
+  * [Advanced Python Objects](#advanced-python-objects)
+  * [GUIs in python](#guis-in-python)
+  * [Final Capstone Project](#final-capstone-project)
+  * [Python Setup](#python-setup)
+* [AI](#ai)
+  * [Reinforcement Learning](#reinforcement-learning)
+    * [Ballman Equation](#ballman-equation)
+    * [Markov Decision Process (MDP)](#markov-decision-process-mdp)
+    * [Policy vs Plan](#policy-vs-plan)
+    * [Living Penalty of the agent](#living-penalty-of-the-agent)
+    * [Q-Learning (value of actions)](#q-learning-value-of-actions)
+    * [Deep Q-Learning Intuition](#deep-q-learning-intuition)
+    * [Deep Convolutional Q-Learning](#deep-convolutional-q-learning)
+  * [Links](#links)
+* [Machine Learning](#machine-learning)
+  * [Multi-modal embedding space math - AWS](#multi-modal-embedding-space-math---aws)
+  * [Resources Links](#resources-links)
 <!-- TOC -->
-## Python Basics
+# Python Basics
 - uses dynamic typing
 - `a = 1 + 1` and `type(a)`
 - Single quote or double quote strings
@@ -66,7 +61,7 @@ print(f"He said his name is {name}.")
 ```
 - len for string length
 
-#### list
+## list
 ```
 mylist = ['one', 'two', 'three']
 newlist = mylist + yourlist
@@ -77,7 +72,7 @@ newlist.pop(2) # pop from index 2
 newlist.sort() # carried out in-place. no return value
 newlist.reverse()'
 ```
-#### dictionary
+## dictionary
 - key-value structure
 - same as map in java
 ```
@@ -88,7 +83,7 @@ dic['lemon'] = 4.99 # new pair. we can override the value as well
 dic.keys()
 dic.values(){
 ```
-#### tuples
+## tuples
 - similar to list but is immutable
 - uses parentheses `()`
 - important use case is when you pass the object and don't want it get changed.
@@ -100,16 +95,16 @@ t.count('a')
 
 x1,x2 = self.cordinate1
 ```
-#### sets
+## sets
 ```
 myset = set()
 myset.add(1)
 uniqueval = set('Mississipi')
 ```
 
-#### boolean
+## boolean
 - True, False
-#### I/O with Basic files
+## I/O with Basic files
 ```
 # works only in jupiter
 %%writefile myfile.txt
@@ -130,7 +125,7 @@ with open('myfile', mode='r') as f:
 pwd 
 ```
 - use shift + tab to see signature
-#### Control flow and loop
+## Control flow and loop
 ```
 if some_condition:
 elif: other_conditions
@@ -213,7 +208,7 @@ for x ...
   for y ....
 ```
 
-#### Methods and functions
+## Methods and functions
 - `help ('sfa'.split)`
 - shift + tab in jypitor
 ```
@@ -312,7 +307,7 @@ list(map(lambda num: num**2, my_nums))
         - Above global, is built-in
     - using `global` keyword, one can access global variable and change the value inside the local func
         - avoid this, and go for passing the global var to the function
-#### OOPS in Python
+## OOPS in Python
 ```
 class NameOfClass():
   pi = 3.14
@@ -326,7 +321,7 @@ class NameOfClass():
 - type(list) --> list class
 - `newClass.param1` and `newClass.bark()`
 
-##### Inheritance and Polymorphism
+### Inheritance and Polymorphism
 ```
 class Dog(Animal):
   def __init__(self):
@@ -337,7 +332,7 @@ class Dog(Animal):
 - Each method will have self in param
 - Polymorphism
   - Cat and Dog class and then iterate them with pet (each has same method signature)
-##### Magic/Dunder methods
+### Magic/Dunder methods
 ```
     def __str__(self):
         return f"{self.title} by {self.author}"
@@ -347,7 +342,7 @@ class Dog(Animal):
 ```
 - `del variable`
 
-#### Modules and packages
+## Modules and packages
 - PyPi is to python as npm is to nodejs
 - Standard libraries
 - Write own modules and package
@@ -362,7 +357,7 @@ class Dog(Animal):
   - In the above, mypackage and subpackage are just two folders containing __init__.py in each
 - Built-in variable `__name__` and `__main__` for organizing code. Check chatgpt for clarification
 
-#### Error and Exception Handling
+## Error and Exception Handling
 - try, except, and finally
 ```
 try:
@@ -379,7 +374,7 @@ finally:
 else
 ```
 
-#### Python Unit Testing
+## Python Unit Testing
 - pylint: reports back possible issues, PEP8
 - unittest: native lib for unit testing
 ```
@@ -393,7 +388,7 @@ if __name__ == '__main__'
   unittest.main()
 ```
 
-#### Python Decorator
+## Python Decorator
 - Add more functionality to a function using @ operator
 ```
 def hello():
@@ -416,7 +411,7 @@ def func1():
 ```
 - Used extensively by frameworks like [Flask](https://flask.palletsprojects.com/en/3.0.x/), [Django](https://www.djangoproject.com/)
 
-#### Python Generator
+## Python Generator
 - Generates values overtime instead of at once
 - Memory efficient
 ```
@@ -448,7 +443,7 @@ def gen_fibon(n):
     a,b = b,a+b
 ```
 
-#### Advanced Python Modules
+## Advanced Python Modules
 - Collection:
 ```
 from collections import Counter
@@ -621,7 +616,7 @@ datetime.timedelta
   
   shutil.unpack_archive('example.zip', 'final_upzip', 'zip')
   ```
-#### Web scraping - downloading images etc
+## Web scraping - downloading images etc
 `
 pip3 install requests
 pip3 install lxml
@@ -657,7 +652,7 @@ example = products0[0]
 example.select(".star-rating.Three")
 ```
 
-#### Working with Images in Python
+## Working with Images in Python
 - `pip3 install pillow`
 ```
 from PIL import Image
@@ -676,7 +671,7 @@ mac.paste(mask, (0,0), mask)
 mac.save("upated-mac.png")
 ```
 
-#### Working with PDFs and Spreadsheet CSV
+## Working with PDFs and Spreadsheet CSV
 - Pandas library used by data science too for data visualization and analysis
 - Openpyxl library
 - Google sheets Python API
@@ -695,7 +690,7 @@ data_lines[10][2]
     - read a page
     - Add text to the end or a new page
 
-#### Email with Python
+## Email with Python
 - Steps: connect to email server --> confirm connection --> setting a protocol --> logging on --> and sending
 - In python built-in `smtplib` used
 - Each mail provider has its own SMTP server i.e smtp.gmail.com
@@ -756,7 +751,7 @@ for part in email_message.walt():
     print(body)
 ```
 
-#### Advanced Python Objects
+## Advanced Python Objects
 - Advance Numbers: hex(...), bin(...), pow(...), abs(...), round(...)
 - Advanced String: capitalize(...), upper(...), count('o'), center(...)
 - Advanced Sets: 
@@ -811,7 +806,7 @@ l.reverse()
 l.sort()
 ```
 
-#### GUIs in python
+## GUIs in python
 - NbViewer, PyGame
 - For Web apps, better use Javascript frameworks like react and angular
 ```
@@ -869,9 +864,9 @@ from matplotlib.colors import cnames
 from matplotlib import animation
 
 ```
-#### Final Capstone Project
+## Final Capstone Project
 - Do it in the free time
-### Python Setup
+## Python Setup
 - `python3 --version` in macos
 - `pip3`
 - Install [JupyterLab](https://jupyter.org/install) using pip3 and start it `jupyter lab`
@@ -909,20 +904,20 @@ except (Exception, pg.Error) as error:
 [7dCo] connection.close()
 ```
 
-## AI
+# AI
 - There are three kinds of machine learning
   - Supervised learning
   - Unsupervised learning
   - Reinforcement learning: challenge specific to this is trade-off between exploration and exploitation
-### Reinforcement Learning
+## Reinforcement Learning
 [Simple Reinforcement Learning with Tensorflow](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0)
-#### Ballman Equation
+### Ballman Equation
 - s - state
 - a - action
 - R - Reward
 - y - Discount
 
-#### Markov Decision Process (MDP)
+### Markov Decision Process (MDP)
 - additional [references](https://www.it.uu.se/edu/course/homepage/aism/st11/MDPApplications3.pdf)
 - It includes just these three aspects:
   - sensation
@@ -930,57 +925,60 @@ except (Exception, pg.Error) as error:
   - goal
 - Reinforcement Learning vs Supervised Learning
   - Supervised L is learning from a training set of labelled examples provided by knowledgeable external supervisor
-#### Policy vs Plan
+### Policy vs Plan
 - Plan is fixed and directions are fixed
   - Bellman's equation
 - Policy is just a guideline - randomness expected (stochastic env.)
   - MDP equation
   - Different board of values than Bellman board
-#### Living Penalty of the agent
+### Living Penalty of the agent
 - Agent is forced to complete fast as each move accumulates negative awards
 - It is rewarded throughout the process instead of just at the end (+1, -1)
 - (-0.04) It changes the board of values in two blocks near fire
 - (-0.5, -2) It changes the board of values substantially
-#### Q-Learning (value of actions)
+### Q-Learning (value of actions)
 - Instead value of state, it uses quality of action (or action)
 - Quantifies actions `Q(s,a)`
 
 ![q-learning](media/q-learning.png)
-##### Additional Reading
-- Markov Decision Processes: Concepts and Algorithms by Martijn van Otterlo (2009)
+
 #### Temporal Difference (How AI updates itself)
 ![q-learning Temporal Difference](media/q-learning-temporal-difference.png)
 
-#### Deep Q-Learning Intuition
-- Q-learning intuition (Learning)
-- Q-learning intuition (Acting)
-  - Q values calculated, using comparing and calculating the loss, propagating the error and it would remain fixed
-  - Learning --> acting (next step)
-  - Neural networks: We feed in the reinforcement learning problem into the neural network through a vector describing the state we are in
-    then happens the learning ()
+#### Additional Reading
+- Markov Decision Processes: Concepts and Algorithms by Martijn van Otterlo (2009)
+
+### Deep Q-Learning Intuition
+#### Q-learning intuition (Learning)
+#### Q-learning intuition (Acting)
+- Q values calculated, using comparing and calculating the loss, propagating the error and it would remain fixed
+- Learning --> acting (next step)
+- Neural networks: We feed in the reinforcement learning problem into the neural network through a vector describing the state we are in
+  then happens the learning ()
 ![learning-equation.png](media/learning-equation.png)
 
 ![neural-networks-graph.jpg](media/neural-networks-graph.jpg)
 
-- Experience Replay
-  - example of car moving in the street
-  - car makes move, new state, propagate in the network, key values and errors calculated and back propagated, weights updated, then cars selects which action to take, ends up in new state and the cycle starts again
-  - It takes a uniformly distributed sample from the batch of experiences it saved in memory: `state-1, action, state-2, reward`
-  - There are also special/rare experiences (i.e sharp corners)
-  - experience replay helps learn faster especially when experiences are limited
-  - Prioritize Experience [Replay](https://arxiv.org/pdf/1511.05952): explore uniform distribution for experience replay
-- Action Selection Policies: uses exploration and exploitation.
-  - Different action selection policies: 
-  - Why different policies: boils down to `Exploration vs Exploitation` which are the core of re-enforcement learning
-  - Local maximum, what if another Q is better?!?
-  - A policy might keep the agent learning and not stuck somewhere. S. Policies:
-    - Epsilon-Greedy: select the one with the best value, except the Epsilon percent of the time i.e E = 10%, 10 percent will be just random (exploration)
-    - Epsilon-soft (1 - Epsilon): Opposite. 10 percent select best Q and 90% time just randomly
-    - Softmax: Vector and Convolutional neural n/w. Output of softmax will be between 0 and 1. We pick up the highest output (probabilities). Sometimes we might pick up a lower value for exploration purpose. Learn from experience
-  - Further reading [here](https://tokic.com/www/tokicm/publikationen/papers/AdaptiveEpsilonGreedyExploration.pdf)
+#### Experience Replay
+- example of car moving in the street
+- car makes move, new state, propagate in the network, key values and errors calculated and back propagated, weights updated, then cars selects which action to take, ends up in new state and the cycle starts again
+- It takes a uniformly distributed sample from the batch of experiences it saved in memory: `state-1, action, state-2, reward`
+- There are also special/rare experiences (i.e sharp corners)
+- experience replay helps learn faster especially when experiences are limited
+- Prioritize Experience [Replay](https://arxiv.org/pdf/1511.05952): explore uniform distribution for experience replay
+#### Action Selection Policies: uses exploration and exploitation.
+- Different action selection policies: 
+- Why different policies: boils down to `Exploration vs Exploitation` which are the core of re-enforcement learning
+- Local maximum, what if another Q is better?!?
+- A policy might keep the agent learning and not stuck somewhere. S. Policies:
+  - Epsilon-Greedy: select the one with the best value, except the Epsilon percent of the time i.e E = 10%, 10 percent will be just random (exploration)
+  - Epsilon-soft (1 - Epsilon): Opposite. 10 percent select best Q and 90% time just randomly
+  - Softmax: Vector and Convolutional neural n/w. Output of softmax will be between 0 and 1. We pick up the highest output (probabilities). Sometimes we might pick up a lower value for exploration purpose. Learn from experience
+- Further reading [here](https://tokic.com/www/tokicm/publikationen/papers/AdaptiveEpsilonGreedyExploration.pdf)
+- 
 ![neural networks](media/neural-networks.png)
 
-####  Deep Convolutional Q-Learning
+###  Deep Convolutional Q-Learning
 - Is simply adding a convolutional neural network to the deep q-learning so that:
   - AI can see images, which will be the inputs of the whole neural n/w (convolutional n/w --> neural network)
 - Discussed here:
@@ -995,13 +993,11 @@ except (Exception, pg.Error) as error:
 - In reality, we can't feed the state vector at input layer. The agent has to see the environment itself.
 - Agent has to process the images the environment is supplying to the agent, the same as human.
 ![conv-deep-q-learning-nw.jpg](media/conv-deep-q-learning-nw.jpg)
-### Links
+## Links
 - Code from A-Z [course](https://drive.google.com/drive/u/0/folders/15dfDBwqC-3mMw6luTz11V00SBggDVQPH)
 - 
-### Machine Learning
-
-
-### Multi-modal embedding space math - AWS
+# Machine Learning
+## Multi-modal embedding space math - AWS
 ![Multi-modal](media/multi-modal.png)
 - Example
   - chap [10](https://github.com/generative-ai-on-aws/generative-ai-on-aws/tree/main/10_multimodal)
@@ -1009,7 +1005,7 @@ except (Exception, pg.Error) as error:
     - search dog with stick --> get image, video, sound
   - Text to video startup introduction
 
-### Resources Links
+## Resources Links
 - [Reference](https://awjuliani.medium.com/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0) reading about deep learning:
 - Training github repo [here](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp.git)
 - [Simple Reinforcement Learning with Tensorflow](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0)
