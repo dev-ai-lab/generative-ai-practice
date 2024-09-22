@@ -958,7 +958,6 @@ We feed in the reinforcement learning problem into the neural network through a 
   then happens the learning ()
 ![learning-equation.png](media/learning-equation.png)
 
-![neural-networks-graph.jpg](media/neural-networks-graph.jpg)
 
 #### Experience Replay
 - example of car moving in the street
@@ -967,19 +966,25 @@ We feed in the reinforcement learning problem into the neural network through a 
 - There are also special/rare experiences (i.e sharp corners)
 - experience replay helps learn faster especially when experiences are limited
 - Prioritize Experience [Replay](https://arxiv.org/pdf/1511.05952): explore uniform distribution for experience replay
+
+![deep-q-learning.png](media/deep-q-learning.png)
+
 #### Action Selection Policies: uses exploration and exploitation.
 - Different action selection policies: 
 - Why different policies: boils down to `Exploration vs Exploitation` which are the core of re-enforcement learning
-- Local maximum, what if another Q is better?!?
-- A policy might keep the agent learning and not stuck somewhere. S. Policies:
-  - Epsilon-Greedy: select the one with the best value, except the Epsilon percent of the time i.e E = 10%, 10 percent will be just random (exploration)
-  - Epsilon-soft (1 - Epsilon): Opposite. 10 percent select best Q and 90% time just randomly
+- Local maximum problem: choosing the old value though there might be another best Q?!?
+- A policy might keep the agent learning and not stuck somewhere. 
+- S. Policies:
+  - Epsilon-Greedy: select the one with the best value, except the Epsilon percent of the time i.e `E = 0.1`, `10%` of the time it will just pick up an action randomly (exploration)
+  - Epsilon-soft (1 - Epsilon): Opposite/Inverted. 10 percent select best Q and 90% time just randomly
   - Softmax: Vector and Convolutional neural n/w. Output of softmax will be between 0 and 1. We pick up the highest output (probabilities). Sometimes we might pick up a lower value for exploration purpose. Learn from experience
 - Further reading [here](https://tokic.com/www/tokicm/publikationen/papers/AdaptiveEpsilonGreedyExploration.pdf)
 - 
 ![neural networks](media/neural-networks.png)
 
 ###  Deep Convolutional Q-Learning
+- In deep q-learning we use vector for the input
+- In convolutional n/w, we uses images as input
 - Is simply adding a convolutional neural network to the deep q-learning so that:
   - AI can see images, which will be the inputs of the whole neural n/w (convolutional n/w --> neural network)
 - Discussed here:
