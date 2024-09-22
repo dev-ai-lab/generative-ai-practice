@@ -34,7 +34,7 @@
     * [Deep Q-Learning Intuition](#deep-q-learning-intuition)
     * [Deep Convolutional Q-Learning](#deep-convolutional-q-learning)
   * [Links](#links)
-* [Machine Learning](#machine-learning)
+* [Machine Learning](#additional-machine-learning-topics)
   * [Multi-modal embedding space math - AWS](#multi-modal-embedding-space-math---aws)
   * [Resources Links](#resources-links)
 <!-- TOC -->
@@ -953,7 +953,8 @@ except (Exception, pg.Error) as error:
 #### Q-learning intuition (Acting)
 - Q values calculated, using comparing and calculating the loss, propagating the error and it would remain fixed
 - Learning --> acting (next step)
-- Neural networks: We feed in the reinforcement learning problem into the neural network through a vector describing the state we are in
+- Neural networks: We feed the states into the neural network through `input layer`
+We feed in the reinforcement learning problem into the neural network through a vector describing the state we are in
   then happens the learning ()
 ![learning-equation.png](media/learning-equation.png)
 
@@ -996,7 +997,7 @@ except (Exception, pg.Error) as error:
 ## Links
 - Code from A-Z [course](https://drive.google.com/drive/u/0/folders/15dfDBwqC-3mMw6luTz11V00SBggDVQPH)
 - 
-# Machine Learning
+# Additional Machine Learning Topics
 ## Multi-modal embedding space math - AWS
 ![Multi-modal](media/multi-modal.png)
 - Example
