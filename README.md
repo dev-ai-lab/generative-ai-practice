@@ -71,6 +71,7 @@ newlist.pop() # removes the last item
 newlist.pop(2) # pop from index 2
 newlist.sort() # carried out in-place. no return value
 newlist.reverse()'
+del self.memory[0]
 ```
 ## dictionary
 - key-value structure
