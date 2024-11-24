@@ -906,10 +906,44 @@ except (Exception, pg.Error) as error:
 ```
 
 # AI
+![ai-foundation.png](media/ai-foundation.png)
+
+![ai-model-customization.png](media/ai-model-customization.png)
+
+- Four different speciality domain:
+  - data analyst: 
+    - insights, reports, query dbs, data visualization. 
+    - Uses: sql, tableau, PowerBI, python, R
+  - data engineer: 
+    - collect, process data with software engineering background. 
+    - Uses: ETL, Spark, Hadoop, Kafka, DBs, clouds
+  - data scientist: 
+    - solves a real/business problem, R&D to invent new models. 
+    - Uses: ML, deep learning theory, advanced python/R, Jupyter Notebook (Numpy, scipy, pandas, Scikit-learn, Matplotlib) 
+    - Deep Neural N/W: Pytorch, Tensorflow, 
+    - LLMs: HuggingFace Transformers
+  - ML Engineer
+    - Productionize ML models, understands data science, deploy and scale models
+    - Combines software engineering with data science
+    - Uses: Broad data science, software engineering, CI/CD, Cloud deployments, docker, k8s, data pipeline frameworks (spark, hadoop, kafka), advanced python
+  - New one: LLM engineer
+
+- Career Path:
 - There are three kinds of machine learning
   - Supervised learning
   - Unsupervised learning
   - Reinforcement learning: challenge specific to this is trade-off between exploration and exploitation
+- *Tensor*: ML generalization of scalar, vector, matrix, 3-tensor, n-tensor
+
+## Responsible AI
+- Fairness: toxicity, intellectual property, avoid hallucinations
+- Privacy
+- Safety
+- Transparency
+- Add filters using AWS Guardrail against harmful content, disallowed topic, mask sensitive info, filter out hallucinations
+## Protect your data
+- encrypt data in transit and in rest across the AI cycle
+- secure the model, data and lineage data
 ## Reinforcement Learning
 [Simple Reinforcement Learning with Tensorflow](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0)
 ### Ballman Equation
