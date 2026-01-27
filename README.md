@@ -1,5 +1,6 @@
 # AI, Machine Learning using Python
 <!-- TOC -->
+* [AI, Machine Learning using Python](#ai-machine-learning-using-python)
 * [Python Basics](#python-basics)
   * [list](#list)
   * [dictionary](#dictionary)
@@ -10,6 +11,8 @@
   * [Control flow and loop](#control-flow-and-loop)
   * [Methods and functions](#methods-and-functions)
   * [OOPS in Python](#oops-in-python)
+    * [Inheritance and Polymorphism](#inheritance-and-polymorphism)
+    * [Magic/Dunder methods](#magicdunder-methods)
   * [Modules and packages](#modules-and-packages)
   * [Error and Exception Handling](#error-and-exception-handling)
   * [Python Unit Testing](#python-unit-testing)
@@ -24,27 +27,56 @@
   * [GUIs in python](#guis-in-python)
   * [Final Capstone Project](#final-capstone-project)
   * [Python Setup](#python-setup)
+* [Mathematical Foundation](#mathematical-foundation)
+  * [Linear Algebra:](#linear-algebra)
+    * [Why we “solve for” (a, b, c, ..., m)](#why-we-solve-for-a-b-c--m)
+    * [One equation is not enough](#one-equation-is-not-enough)
+    * [Matrix form (this is why TensorFlow loves it)](#matrix-form-this-is-why-tensorflow-loves-it)
+    * [Why the bias (a) exists](#why-the-bias-a-exists)
+    * [Why this is *not* just math — it’s modeling](#why-this-is-not-just-math--its-modeling)
+    * [One-sentence intuition (the money line)](#one-sentence-intuition-the-money-line)
 * [AI](#ai)
+  * [Responsible AI](#responsible-ai)
+  * [Protect your data](#protect-your-data)
+  * [Good start](#good-start)
+  * [Mathematical foundation of ML](#mathematical-foundation-of-ml)
   * [Reinforcement Learning](#reinforcement-learning)
     * [Ballman Equation](#ballman-equation)
     * [Markov Decision Process (MDP)](#markov-decision-process-mdp)
     * [Policy vs Plan](#policy-vs-plan)
     * [Living Penalty of the agent](#living-penalty-of-the-agent)
     * [Q-Learning (value of actions)](#q-learning-value-of-actions)
+      * [Temporal Difference (How AI updates itself)](#temporal-difference-how-ai-updates-itself)
+      * [Additional Reading](#additional-reading)
     * [Deep Q-Learning Intuition](#deep-q-learning-intuition)
+      * [Q-learning intuition (Learning)](#q-learning-intuition-learning)
+      * [Q-learning intuition (Acting)](#q-learning-intuition-acting)
+      * [Experience Replay](#experience-replay)
+      * [Action Selection Policies: uses exploration and exploitation.](#action-selection-policies-uses-exploration-and-exploitation)
     * [Deep Convolutional Q-Learning](#deep-convolutional-q-learning)
   * [Links](#links)
-* [Machine Learning](#additional-machine-learning-topics)
+* [Additional Machine Learning Topics](#additional-machine-learning-topics)
   * [Multi-modal embedding space math - AWS](#multi-modal-embedding-space-math---aws)
+  * [LLMs](#llms)
+    * [prompt engineering](#prompt-engineering)
+    * [LLMs](#llms-1)
+    * [Transformer](#transformer)
+    * [GANs](#gans)
+    * [Drawbacks](#drawbacks)
+    * [Future of GenAI](#future-of-genai)
+    * [Agentic AI](#agentic-ai)
+  * [LLM  Evaluation](#llm--evaluation)
+  * [GenAI use cases](#genai-use-cases)
   * [Resources Links](#resources-links)
 <!-- TOC -->
 # Python Basics
 - uses dynamic typing
 - `a = 1 + 1` and `type(a)`
-- Single quote or double quote strings
-- `\t` and `\n`in strings
-- `myString[0] or myString[-1]`
-- `mystring[start:stop:step]` i.e `mystring[2:7:2]`
+- Single quote(when you have double one in string) or double quote (when having single quotes in string) and triple quotes (when having both)
+- `\t` and `\n`in strings are escape sequences
+- `myString[0]` first char and `myString[-1]` last char. Negative indexing allowed in python.
+  - Reversing a string: `print(myString[::-1])` (?)
+- `mystring[start(inclusive, default to 0):stop(exclusive, default to end of string):step]` i.e `mystring[2:7:2]`
 - `mystring[2:]` and `mystring[:3]`
 - Strings are immutable
 - `'a' * 10`is valid
@@ -134,6 +166,9 @@ else:
 
 for item in items_list:
   print(item);
+
+for i, c in enumberate(string1):
+  print(i,c);
 
 mylist = [(1,2), (4,5), (7,8)]
 for (a,b) in mylist:
@@ -904,6 +939,121 @@ except (Exception, pg.Error) as error:
 [6] data[0][4]
 [7dCo] connection.close()
 ```
+# Mathematical Foundation
+
+------
+
+## Linear Algebra:
+
+The equation
+
+![img.png](media/math/one-datapoint-equation.png)
+
+is saying:
+
+> “The output (y) is a **weighted sum of features**, plus a constant offset.”
+
+Where:
+
+* (x_1, x_2, ... , x_m) = **features** (measurable properties of one data point)
+* (a) = **bias / intercept** (baseline value)
+* (b, c, ..., m) = **weights** (how important each feature is)
+
+Example (house pricing):
+
+* (x_1) = size
+* (x_2) = bedrooms
+* (x_3) = age of house
+* (y) = price
+
+
+### Why we “solve for” (a, b, c, ..., m)
+
+The **features are known**, the **output is known**, but the **relationship is unknown**.
+
+So:
+
+* We measure (x_1, x_2, ..., x_m)
+* We observe (y)
+* We **solve for the coefficients** that best explain that relationship
+
+In other words:
+
+> The coefficients *define the model*.
+
+
+### One equation is not enough
+
+For **one data point**:
+
+![img_1.png](media/math/system-of-equations.png)
+
+### Matrix form (this is why TensorFlow loves it)
+
+Rewrite everything compactly:
+
+![img.png](media/math/matrix-form.png)
+
+Where:
+
+* X = matrix of **features**
+* w = vector of **unknown coefficients** ([a, b, c, ...]^T)
+* y = known outputs
+
+This is why notes say:
+
+> “We solve for (a, b, c, \dots, m).”
+
+Because once you know them:
+
+* You can predict new outputs
+* You understand feature importance
+* You’ve captured the pattern in the data
+
+---
+
+### Why the bias (a) exists
+
+Without (a):
+
+[
+y = bx_1 + cx_2 + \dots
+]
+
+This **forces the model through the origin** (when all features are zero, (y=0)).
+
+The bias allows:
+
+* A baseline value
+* Vertical shifting
+* Better real-world modeling
+
+In practice, (a) is handled by adding a feature (x_0 = 1).
+
+
+### Why this is *not* just math — it’s modeling
+
+You’re not solving equations just to “get numbers”.
+
+You’re answering:
+
+* “How much does each feature matter?”
+* “What is the underlying rule connecting inputs to outputs?”
+
+That’s why:
+
+* Statisticians call it **regression**
+* ML people call it **learning**
+* Linear algebra people call it **solving a system**
+
+Same idea, different lens.
+
+
+### One-sentence intuition (the money line)
+
+> We solve for (a, b, c, \dots) because they describe the **relationship** between features and output — once we know them, the model can generalize to new data.
+
+
 
 # AI
 ![ai-foundation.png](media/ai-foundation.png)
@@ -933,7 +1083,7 @@ except (Exception, pg.Error) as error:
   - Supervised learning
   - Unsupervised learning
   - Reinforcement learning: challenge specific to this is trade-off between exploration and exploitation
-- *Tensor*: ML generalization of scalar, vector, matrix, 3-tensor, n-tensor
+
 
 ## Responsible AI
 - Fairness: toxicity, intellectual property, avoid hallucinations
@@ -944,6 +1094,22 @@ except (Exception, pg.Error) as error:
 ## Protect your data
 - encrypt data in transit and in rest across the AI cycle
 - secure the model, data and lineage data
+## Good start
+- Start with people's training
+- Be responsible ai driver
+- Create plan, modernize data governance
+- find a good pilot project
+- make good choices
+
+## Mathematical foundation of ML
+- Linear algebra
+- *Tensor*: ML generalization of scalar, vector [x1, x2, x3], matrix, 3-tensor, n-tensor
+- Tensorflow vs pyTorch vs NumPy
+  - Pytorch is more pythonic (feels and behave like NumPy arrays)
+  - Advantage of pytorch tensors relative to NumPy arrays is that they easily used for operations on GPU
+  - `torch.tensor(25)` scalar tensor
+  - `tensorflow.Variable(3, dtype=tensorflow.int16`
+- Vector: `[x1 x2] = [12 4]`
 ## Reinforcement Learning
 [Simple Reinforcement Learning with Tensorflow](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0)
 ### Ballman Equation
@@ -1046,6 +1212,181 @@ We feed in the reinforcement learning problem into the neural network through a 
     - search dog with stick --> get image, video, sound
   - Text to video startup introduction
 
+## LLMs
+### prompt engineering
+- Prompt pattern:
+  - Persona i.e act as a sceptic that is well versed in computer science
+  - Question refinement pattern i.e suggestion alternative to my question to optimize the response
+  - Audience persona pattern i.e explain gravity to me. assume I am a 12 grade student
+  - Cognitive verifier pattern i.e what prompt is ideal --> ask and let him suggest additional questions
+  - Flipped interaction pattern: very novice, ask me questions and then let me know the plan based on my answers
+  - Recipe pattern:
+  - Prompt: Trigger phrase, content, context(optional)
+  - Open-ended prompts vs close-ended prompts
+  - Prompt Engineering is the art of optimizing prompts to get the desired output from LLMs
+  - AI (Learning, Reasoning, Self-correction)
+  - ML (Supervised, Unsupervised, Reinforcement)
+  - NLP (Text classification, Sentiment analysis, Named entity recognition, Language translation, Text generation)
+  - LLMs (Training on massive datasets, versatility, adaptability)
+- Prompt Techniques:
+  - How design prompts:
+    - Clarity and conciseness
+    - Contextual relevance
+    - Use modifiers
+    - Goal orientation
+    - directness, specificity, simplicity language, avoiding open-ended questions, prompt iteration (feedback loop)
+  - Prompt length: Brief prompts, detailed prompts, verbose prompts, highly verbose, role-playing prompts
+  - Prompt modifiers: 
+    - tone (polite, professional,sarcasm etc), 
+    - style (formal, informal), 
+    - format (bullets points, dialogue, essay, summary), 
+    - perspective (first person, second person, objective, subjective), 
+    - complexity (simple, complex, technical, layman's term, advanced), 
+    - purpose (instructional, exploratory, argumentative, descriptive, comparative), 
+    - audience (beginners, experts, for children, for business professionals, academic, public)
+  - Contextual Influence on AI outputs:
+    - Prior conversations and continuity
+    - External Data (i.e use recent data)
+    - Embedded Knowledge (i.e domain-specific terms)
+    - Cultural and Temporal Context (i.e current events, cultural references)
+  - Prompt Priming:
+    - Topic-specific priming
+    - Opinion priming
+    - Tone and style priming
+    - Context-specific priming
+  - Prompt Engineering Techniques
+    - Zero-shot prompting
+    - One-shot
+    - Multi-shot or few-shot
+    - Role 
+    - Tabular format
+    - Ask before answering
+    - Fill in the blanks
+    - Perspective prompting
+    - Chain-of-thought prompting
+    - Generated Knowledge prompting
+  - Where to deploy prompts design strategies:
+    - Project Management Optimization
+    - Client Interaction and reporting
+    - Market Research and Analysis
+    - Strategic decision support
+    - Innovation and Development
+    - Chatbots and virtual assistants
+    - Content generation tools
+    - Customer support systems
+    - Educational platforms
+    - Data analysis and insights tools
+    - Creative writing aids
+    - Code generation tools
+    - Personal productivity applications
+  - Best practices in prompt engineering:
+    - Using the latest AI models: 
+      - GPT-4 (OpenAI): Text understanding and generation
+      - Claude (Anthropic): Conversational AI with safety focus
+      - Gemini (Google): Improved understanding of contexts and nuances, advanced NLP
+      - DALLE-3 (OpenAI): Accurate image generation from text prompts
+    - Specifying Output format:
+      - Text outpout
+      - Structured Out: bullet points, tables, JSON etc
+      - Code Output
+      - Dialogue Output
+    - Actionable prompts:
+      - Incorporating information on what to do
+        - Explicit action 
+        - Scenario-based prompt
+        - Use imperative language
+        - Breakdown complex tasks
+        - Include decision points
+      - Be specific and descriptive
+        - Define the specific context clearly:
+        - Use precise language: i.e Design a responsive HTML website with a homepage, about page, contact form, using React, NextJs
+        - Include relevant details: Write a detailed proposal for a three-month digital marketing campaign targeting males aged 25-35, using social media platforms with a budget of 50,000 USD.
+        - Specify desired format: state explicitly.
+        - Ask for examples: ... and provide real time examples
+### LLMs
+### Transformer
+- trained on general data. it has to be trained on specific business data at later stages
+### GANs
+### Drawbacks
+- Hallucinations: if creativity there, Hallucinations is there too - responsible AI
+- Biases: due to data it was trained on 
+- Black: lack of transparency because of complex mathematics - explainable AI
+- Disclosure rules and privacy
+
+### Future of GenAI
+- bigger and better models
+- transition from content generation to action using IoT technologies etc - agentic AI
+
+### Agentic AI
+- action-oriented 
+- Loop:
+  - Perception
+  - Reasoning
+- It revolutionizes health and finance sectors
+
+
+
+## LLM  Evaluation
+- Local Setups:
+  - Ollama(Local LLMs, REST API, Llama, Gemma, Phi, Deepseek, Qwen, Graphite)
+  - Anything LLM --> Open WebUI
+  - Goose CLI
+  - Copilot CLI
+  - HuggingFace
+- Online Setups:
+  - OpenAI
+  - Azure OpenAI
+  - AI21 Studio
+  - Cohere
+  - Anthropic
+  - Google PaLM
+  - Llama2 via AWS Bedrock
+- Custom Workflows, Automation and Evaluation:
+  - LangChain
+  - LlamaIndex
+  - AutoGPT
+  - BabyAGI
+  - AgentGPT
+  - AnythingLLM
+  - Nodejs/Python
+  - N8n/ flowise
+- How to test chatbots/LLMs:
+  - Human evaluation
+  - Automated evaluation
+  - Hybrid evaluation
+  - Ollama.com/library/qwen3
+  
+- Evaluation types:
+  - Accuracy
+  - Fluency
+  - Coherence
+  - Relevance
+  - Diversity
+  - Robustness
+  - Latency
+  - Scalability
+
+## GenAI use cases
+- text to text
+- text to image
+- text to video
+- text to audio
+- code generation
+- data analysis
+
+- Real time use cases:
+  - brainstorming and ideation
+  - summarization and content distillation
+  - text enhancement and editing
+  - code generation and software development
+  - content creation
+  - customer support
+  - personalized marketing
+  - data analysis and insights
+  - healthcare and diagnostics
+  - education and training
+  - gaming and entertainment
+  - virtual assistants
 ## Resources Links
 - [Reference](https://awjuliani.medium.com/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0) reading about deep learning:
 - Training github repo [here](https://github.com/Pierian-Data/Complete-Python-3-Bootcamp.git)
