@@ -976,7 +976,7 @@ In other words:
 
 For **one data point**:
 
-![img_1.png](media/math/system-of-equations.png)
+![img.png](media/math/system-of-equations.png)
 
 Matrix form (this is why TensorFlow loves it) and rewrite everything compactly:
 
@@ -990,7 +990,7 @@ Where:
 
 This is why notes say:
 
-> “We solve for (a, b, c, \dots, m).”
+> “We solve for (a, b, c, ..., m).”
 
 Because once you know them:
 
