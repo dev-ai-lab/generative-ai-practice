@@ -967,8 +967,6 @@ Example (house pricing):
 * (y) = price
 
 
-### Why we “solve for” (a, b, c, ..., m)
-
 The **features are known**, the **output is known**, but the **relationship is unknown**.
 
 So:
@@ -982,15 +980,11 @@ In other words:
 > The coefficients *define the model*.
 
 
-### One equation is not enough
-
 For **one data point**:
 
 ![img_1.png](media/math/system-of-equations.png)
 
-### Matrix form (this is why TensorFlow loves it)
-
-Rewrite everything compactly:
+Matrix form (this is why TensorFlow loves it) and rewrite everything compactly:
 
 ![img.png](media/math/matrix-form.png)
 
@@ -1012,12 +1006,12 @@ Because once you know them:
 
 ---
 
-### Why the bias (a) exists
+Why the bias (a) exists
 
 Without (a):
 
 [
-y = bx_1 + cx_2 + \dots
+y = bx_1 + cx_2 + ... + mx_m
 ]
 
 This **forces the model through the origin** (when all features are zero, (y=0)).
@@ -1031,7 +1025,7 @@ The bias allows:
 In practice, (a) is handled by adding a feature (x_0 = 1).
 
 
-### Why this is *not* just math — it’s modeling
+**Why this is *not* just math — it’s modeling**
 
 You’re not solving equations just to “get numbers”.
 
@@ -1049,9 +1043,9 @@ That’s why:
 Same idea, different lens.
 
 
-### One-sentence intuition (the money line)
+**One-sentence intuition (the money line)**
 
-> We solve for (a, b, c, \dots) because they describe the **relationship** between features and output — once we know them, the model can generalize to new data.
+> We solve for (a, b, c, ...) because they describe the **relationship** between features and output — once we know them, the model can generalize to new data.
 
 
 
