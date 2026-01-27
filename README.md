@@ -933,11 +933,16 @@ except (Exception, pg.Error) as error:
 [6] data[0][4]
 [7dCo] connection.close()
 ```
-# Mathematical Foundation
+# Mathematical Foundation for ML
 
-------
+![img.png](media/math/ml-learning-pyramid.png)
 
 ## Linear Algebra:
+2.5t = 3 (t - 5)
+- Either one solution, no solution or infinite solutions. Thinks of intersection on the graph (one intersection, parallel or on top of each other)
+
+**Notebook Used**:
+[1-intro-to-linear-algebra-jonkrohn.ipynb](notebooks/1-intro-to-linear-algebra-jonkrohn.ipynb)
 
 The equation
 
@@ -998,7 +1003,6 @@ Because once you know them:
 * You understand feature importance
 * You’ve captured the pattern in the data
 
----
 
 Why the bias (a) exists
 
@@ -1031,7 +1035,7 @@ You’re answering:
 That’s why:
 
 * Statisticians call it **regression**
-* ML people call it **learning**
+* ML people call it **learning** with x_i as inputs to the model and y as labels
 * Linear algebra people call it **solving a system**
 
 Same idea, different lens.
