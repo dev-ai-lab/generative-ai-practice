@@ -1045,6 +1045,143 @@ Same idea, different lens.
 
 > We solve for (a, b, c, ...) because they describe the **relationship** between features and output — once we know them, the model can generalize to new data.
 
+**Tensors**:
+- It is ML generalization of scalar, vector [x1, x2, x3], matrix, 3-tensor, n-tensor
+
+|   Dimension | Mathematical Name | Common ML Name | Description              | Typical dtypes                                 |
+| ----------: | ----------------- | -------------- | ------------------------ | ---------------------------------------------- |
+|      **0D** | Scalar            | Scalar         | Single numerical value   | `int32`, `int64`, `float32`, `float64`, `bool` |
+|      **1D** | Vector            | Vector         | Ordered list of numbers  | `int32`, `float32`, `float64`, `float16`       |
+|      **2D** | Matrix            | Matrix         | 2D grid (rows × columns) | `float32`, `float64`, `float16`, `bfloat16`    |
+|      **3D** | 3rd-order Tensor  | 3D Tensor      | Stack of matrices        | `float32`, `float16`, `bfloat16`, `int8`       |
+| **nD (≥4)** | n-th Order Tensor | Tensor         | Multi-dimensional array  | `float32`, `float16`, `bfloat16`, `int8`       |
+
+
+**Note**: Automatic differentiation frameworks (e.g., TensorFlow, PyTorch) use tensors to efficiently compute gradients for optimization.
+The advantage of PyTorch tensors relative to NumPy arrays is that they easily be used for operations on GPU
+Pytorch vs Tensorflow: in terms of simplicity pytorch is more pythonic (feels and behave like NumPy arrays) and simple. Tensorflow however is more production ready and has better deployment/libraries options.
+Optimally be able to manipulate tensors using pytorch, tensorflow and numpy.
+
+
+**Vectors**:
+i.e [x1 x2] = [12 4]
+- Vector of length two representing a point in 2D space (or 2D Matrix)
+- A vector of length three representing a point in 3D space (or 3D Matrix) i.e in a Cube
+- A vector of length n representing a point in n-dimensional space (or nD Matrix). It would be difficult to visualize beyond 3D but computers can handle it easily.
+- Vector transposition: converting row vector to column vector and vice versa
+  - Row vector: [x1 x2 x3] shape (1,3)
+  - Column vector: Shape (3,1)
+  ```
+  [x1
+   x2
+   x3]
+  ```
+- A vector represents both a **magnitude** and a **direction** in space.
+- Norms are functions that measure (quantify) the size or length of vectors.
+  - L1 norm (Manhattan norm): sum of absolute values of vector components
+  - L2 norm (Euclidean norm): square root of the sum of the squares of vector components
+  ![img.png](media/math/euclidean-norm.png)
+    - It is the most common norm used in ML
+  - Squared L2 norm: sum of the squares of vector components (without square root)
+    - It is simply the L2 norm squared
+    - Or just xTx (i.e matrix multiplication of vector transposed and vector itself) which is very efficient to compute (cheaper computationally)
+  - L∞ norm (Maximum norm): maximum absolute value among vector components
+  
+  ![img.png](media/math/Lp-norm.png)
+  
+- Unit Vector: A vector with a magnitude of 1. It indicates direction only.
+  - To convert any vector to a unit vector, divide each component by the vector's magnitude (L2 norm).
+  - Example: Vector v = [3, 4]
+    - Magnitude ||v|| = sqrt(3^2 + 4^2) = 5
+    - Unit vector u = [3/5, 4/5] = [0.6, 0.8]
+
+- Reference note for trigonometry:
+  - Sine (sin): opposite/hypotenuse
+  - Cosine (cos): adjacent/hypotenuse
+  - Tangent (tan): opposite/adjacent
+  - Pythagorean theorem: a^2 + b^2 = c^2
+  - Radians vs Degrees: 360 degrees = 2π radians
+  - Common angles:
+    - 0 degrees = 0 radians
+    - 30 degrees = π/6 radians
+    - 45 degrees = π/4 radians
+    - 60 degrees = π/3 radians
+    - 90 degrees = π/2 radians
+---
+A **vector** has:
+
+* **Magnitude** (length)
+* **Direction**
+
+Examples: displacement, velocity, force.
+
+A vector in 2D is written as:
+![img.png](media/math/img.png)
+
+- Dot Product (·)
+
+![img_1.png](media/math/img_1.png)
+
+
+- Cross Product (×)
+
+![img_2.png](media/math/img_2.png)
+
+## 4. Right-Angled Triangle Trigonometry
+
+For an acute angle **θ**:
+
+* **Hypotenuse**: longest side
+* **Opposite**: across from θ
+* **Adjacent**: next to θ
+
+- SOH–CAH–TOA
+  - **Sine** (sin): opposite/hypotenuse
+  - **Cosine** (cos): adjacent/hypotenuse
+  - **Tangent** (tan): opposite/adjacent
+
+Trig functions are ratios, so they depend only on the angle.
+
+- Common Trig Values
+  - Sine
+
+| θ   | sin θ  |
+| --- | ------ |
+| 0°  | 0      |
+| 30° | 1/2    |
+| 45° | √2 / 2 |
+| 60° | √3 / 2 |
+| 90° | 1      |
+
+  - Cosine
+
+| θ   | cos θ  |
+| --- | ------ |
+| 0°  | 1      |
+| 30° | √3 / 2 |
+| 45° | √2 / 2 |
+| 60° | 1/2    |
+| 90° | 0      |
+
+  - Tangent
+    - sin θ / cos θ
+
+| θ   | tan θ     |
+| --- | --------- |
+| 0°  | 0         |
+| 30° | 1 / √3    |
+| 45° | 1         |
+| 60° | √3        |
+| 90° | undefined |
+
+
+
+- Key Connections to Remember
+
+* **Dot product → cosine → alignment**
+* **Cross product → sine → perpendicularity**
+* Components of vectors already include trig
+* Trig comes from **right-angled triangles**
 
 
 # AI
@@ -1093,15 +1230,6 @@ Same idea, different lens.
 - find a good pilot project
 - make good choices
 
-## Mathematical foundation of ML
-- Linear algebra
-- *Tensor*: ML generalization of scalar, vector [x1, x2, x3], matrix, 3-tensor, n-tensor
-- Tensorflow vs pyTorch vs NumPy
-  - Pytorch is more pythonic (feels and behave like NumPy arrays)
-  - Advantage of pytorch tensors relative to NumPy arrays is that they easily used for operations on GPU
-  - `torch.tensor(25)` scalar tensor
-  - `tensorflow.Variable(3, dtype=tensorflow.int16`
-- Vector: `[x1 x2] = [12 4]`
 ## Reinforcement Learning
 [Simple Reinforcement Learning with Tensorflow](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0)
 ### Ballman Equation
