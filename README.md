@@ -29,7 +29,6 @@
   * [Python Setup](#python-setup)
 * [Mathematical Foundation for ML](#mathematical-foundation-for-ml)
   * [Linear Algebra:](#linear-algebra)
-  * [4. Right-Angled Triangle Trigonometry](#4-right-angled-triangle-trigonometry)
 * [AI](#ai)
   * [Responsible AI](#responsible-ai)
   * [Protect your data](#protect-your-data)
@@ -1127,10 +1126,9 @@ A vector in 2D is written as:
 
 ![img_2.png](media/math/img_2.png)
 
-## 4. Right-Angled Triangle Trigonometry
+- Right-Angled Triangle Trigonometry:
 
 For an acute angle **θ**:
-
 * **Hypotenuse**: longest side
 * **Opposite**: across from θ
 * **Adjacent**: next to θ
