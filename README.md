@@ -1106,7 +1106,7 @@ i.e [x1 x2] = [12 4]
     - 45 degrees = π/4 radians
     - 60 degrees = π/3 radians
     - 90 degrees = π/2 radians
----
+
 A **vector** has:
 
 * **Magnitude** (length)
