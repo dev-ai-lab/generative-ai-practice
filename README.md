@@ -1093,8 +1093,72 @@ i.e [x1 x2] = [12 4]
   - Example: Vector v = [3, 4]
     - Magnitude ||v|| = sqrt(3^2 + 4^2) = 5
     - Unit vector u = [3/5, 4/5] = [0.6, 0.8]
+- Basis Vectors:
+  - They can be scaled to represent any vector in that space.
+  - In 2D space, the standard basis vectors are i = [1, 0] and j = [0, 1].
+  - In 3D space, the standard basis vectors are i = [1, 0, 0], j = [0, 1, 0], and k = [0, 0, 1].
+- Orthogonal Vectors: Two vectors are orthogonal if their dot product is zero.
+  - Example: v1 = [1, 2], v2 = [-2, 1]
+    - Dot product v1 · v2 = (1)(-2) + (2)(1) = -2 + 2 = 0 or the vector's transposed multiplied by the other vector equals zero
+    - Therefore, v1 and v2 are orthogonal.
+    - In an n-dimensional space, there is at most n mutually orthogonal vectors.
+- Orthonormal vectors are orthogonal and all have unit norm
 
-- Reference note for trigonometry:
+- **Marcies**:
+  - Two-dimensional matrices are like a table with rows and columns
+- **Generic Tensor Notation**
+  - Annotated with X. 
+  - Example a 4D tensor X(i,j,k,l) where i,j,k,l are the indices for each dimension
+
+- **Tensor Operations**:
+  - Transposition: swapping rows and columns of a matrix
+  - Addition/Subtraction: element-wise addition or subtraction of matrices/tensors of the same shape
+  - Hadamard Product: element-wise multiplication of matrices/tensors of the same shape. A * B 
+  - Reduction: collapsing a tensor along specified dimensions using operations like sum, mean, max. i.e in numpy `np.sum(X)`
+    - Reduction across rows: summing each column i,e in numpy `np.sum(X, axis=0)`
+    - Reduction across columns: summing each row i.e in numpy `np.sum(X, axis=1)`
+  - Scalar Multiplication: multiplying each element by a scalar value
+  - Matrix Multiplication: combining two matrices to produce a new matrix
+    - The number of columns in the first matrix must equal the number of rows in the second matrix
+    - The resulting matrix has dimensions of the number of rows from the first and the number of columns from the second
+    - Example:
+    ```    
+    A = [[1, 2, 3],
+         [4, 5, 6]]
+    B = [[7, 8],
+        [9, 10],
+        [11, 12]]
+    AB = [[58, 64],
+         [139, 154]]
+    ```
+  - Dot Product:
+    - Measures similarity between two vectors
+    - Formula: a · b = ||a|| ||b|| cos(θ)
+    - Where θ is the angle between the vectors
+    - If θ = 0 (vectors point in same direction), cos(0) = 1, so a · b = ||a|| ||b||
+    - If θ = 90° (vectors are orthogonal), cos(90°) = 0, so a · b = 0
+    - If θ = 180° (vectors point in opposite directions), cos(180°) = -1, so a · b = -||a|| ||b||
+
+**Solving Linear System with Substitution**:
+- For two variables:
+  - Example:
+    - 2x + 3y = 6  ...(1)
+    - 4x + y = 5   ...(2)
+  - Solve (1) for y:
+    - y = (6 - 2x)/3
+  - Substitute into (2):
+    - 4x + (6 - 2x)/3 = 5
+    - Multiply through by 3 to eliminate fraction:
+      - 12x + 6 - 2x = 15
+      - 10x = 9
+      - x = 9/10 = 0.9
+    - Substitute back to find y:
+      - y = (6 - 2(0.9))/3 = (6 - 1.8)/3 = 4.2/3 = 1.4
+    - Solution: x = 0.9, y = 1.4
+
+- FURTHER DOCS IN THE NOTEBOOK ITSELF DUE TO ITS SUPPORT FOR LATEX FORMATTING
+---
+- **Reference note for trigonometry**:
   - Sine (sin): opposite/hypotenuse
   - Cosine (cos): adjacent/hypotenuse
   - Tangent (tan): opposite/adjacent
