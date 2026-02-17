@@ -1104,7 +1104,7 @@ i.e [x1 x2] = [12 4]
     - In an n-dimensional space, there is at most n mutually orthogonal vectors.
 - Orthonormal vectors are orthogonal and all have unit norm
 
-- **Marcies**:
+- **Matrices**:
   - Two-dimensional matrices are like a table with rows and columns
 - **Generic Tensor Notation**
   - Annotated with X. 
