@@ -119,6 +119,21 @@ pip install tensorflow
 
 ```
 
+**Quick setup: TensorFlow notebook kernel (`tf-genai`)**
+
+Use this clean setup when you want a dedicated TensorFlow environment for notebooks.
+
+```bash
+conda create -n tf-genai python=3.11 -c conda-forge -y
+conda activate tf-genai
+conda install -c conda-forge numpy scipy pandas matplotlib seaborn jupyter ipykernel -y
+python -m pip install "numpy==1.26.4"
+python -m pip install tensorflow
+python -m ipykernel install --user --name tf-genai --display-name "Python (tf-genai)"
+```
+
+After this, open your notebook in VS Code and select the kernel: `Python (tf-genai)`.
+
 
 **7️⃣ VS Code Setup**
 

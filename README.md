@@ -29,6 +29,17 @@
   * [Python Setup](#python-setup)
 * [Mathematical Foundation for ML](#mathematical-foundation-for-ml)
   * [Linear Algebra:](#linear-algebra)
+    * [Machine Learning Optimization](#machine-learning-optimization)
+      * [2. Statistics versus Machine Learning](#2-statistics-versus-machine-learning)
+      * [3. Objective Functions](#3-objective-functions)
+      * [4. Mean Absolute Error](#4-mean-absolute-error)
+      * [5. Mean Squared Error](#5-mean-squared-error)
+      * [6. Minimizing Cost with Gradient Descent](#6-minimizing-cost-with-gradient-descent)
+      * [7. Gradient Descent from Scratch with PyTorch](#7-gradient-descent-from-scratch-with-pytorch)
+      * [8. Critical Points](#8-critical-points)
+      * [9. Stochastic Gradient Descent](#9-stochastic-gradient-descent)
+      * [10. Learning Rate Scheduling](#10-learning-rate-scheduling)
+      * [11. Maximizing Reward with Gradient Ascent](#11-maximizing-reward-with-gradient-ascent)
 * [AI](#ai)
   * [Responsible AI](#responsible-ai)
   * [Protect your data](#protect-your-data)
@@ -1043,6 +1054,146 @@ Same idea, different lens.
 **One-sentence intuition (the money line)**
 
 > We solve for (a, b, c, ...) because they describe the **relationship** between features and output — once we know them, the model can generalize to new data.
+
+### Machine Learning Optimization
+
+#### 2. Statistics versus Machine Learning
+
+Both statistics and ML try to learn patterns from data, but they differ in scale and modeling flexibility.
+
+- A traditional statistical approach works very well on smaller, structured datasets and highly interpretable models.
+- The ML optimization approach is designed to scale to massive datasets and very high-dimensional feature spaces (billions of data points and thousands to millions of features).
+
+In particular, deep learning enables us to:
+- Handle many input features and large raw inputs like images, videos, and audio.
+- Handle many outputs, including outputs at different stages of a model.
+- Automatically learn hierarchical and highly abstract patterns in input data.
+- Capture non-linear relationships that are hard to encode manually.
+
+Trade-off:
+- Deep learning models are usually less explainable than classical statistical models.
+
+#### 3. Objective Functions
+
+Objective function is also called a criterion.
+
+- We define a function f(x) and optimize it by adjusting model parameters.
+- In ML, minimizing is usually more common than maximizing.
+- When minimizing, f(x) is often called cost, loss, or error function.
+
+Minimizing objective:
+- Find x* where f(x) is minimum.
+- Notation: x* = arg min f(x).
+
+Maximizing objective:
+- Also important in specific ML areas.
+- Example: reinforcement learning reward maximization.
+- Notation: x* = arg max f(x).
+
+This naturally leads to regression losses and error metrics.
+
+#### 4. Mean Absolute Error
+
+Once we choose a model, we need a way to measure how good or bad its predictions are.
+
+For regression, let:
+- y_i = true value
+- y_hat_i = predicted value
+- n = number of data points
+
+For MAE:
+
+$$
+MAE = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|
+$$
+
+  - Interpretable and relatively robust to outliers compared to MSE: MAE is the average absolute error in the original target unit (for example, dollars), so it is easy to explain; and because errors are not squared, one very large error increases MAE linearly instead of disproportionately.
+  - Every error contributes linearly.
+
+#### 5. Mean Squared Error
+
+For MSE:
+
+$$
+MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2
+$$
+
+  - Penalizes large errors more heavily due to squaring.
+  - Smooth and optimization-friendly, widely used for training.
+
+Related metric (often reported together with MSE): RMSE
+
+$$
+RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}
+$$
+
+  - Same outlier sensitivity pattern as MSE.
+  - Returns error in the same unit as the target variable.
+
+How to choose quickly:
+- Prefer MAE when robustness and interpretability are priorities.
+- Prefer MSE when you want stronger penalties for large misses and smoother gradients.
+- Prefer RMSE when you want MSE behavior but reporting in target units.
+
+In practice:
+- Train with an objective function (often MSE for regression).
+- Report one or more metrics (MAE, RMSE) based on business meaning.
+
+From measuring error (MAE/MSE), we now move to how we minimize it during training.
+
+#### 6. Minimizing Cost with Gradient Descent
+
+- Let the model parameters be theta and the objective be J(theta).
+- Around the current point, a first-order (local linear) approximation says:
+
+$$
+J(\theta + \Delta) \approx J(\theta) + \nabla J(\theta)^T\Delta
+$$
+
+- To make J smaller, choose a step Delta that points opposite to the steepest-increase direction (the gradient).
+- Set Delta = -alpha * gradient, where alpha > 0 is the step size (learning rate).
+- Substituting gives the update rule:
+
+$$
+  heta_{t+1} = \theta_t - \alpha \nabla J(\theta_t)
+$$
+
+- Intuition:
+  - gradient tells us which direction increases loss the fastest.
+  - the minus sign flips that direction so we move downhill.
+  - alpha controls how big each step is (too large can overshoot, too small can be very slow).
+- Goal: reduce loss iteratively until updates become small or validation performance stops improving.
+
+#### 7. Gradient Descent from Scratch with PyTorch
+
+- Define parameters as tensors with gradient tracking.
+- Compute loss from predictions and targets.
+- Call backward pass to compute gradients.
+- Update parameters and zero gradients each iteration.
+
+#### 8. Critical Points
+
+- Critical points are where gradient is zero (or undefined).
+- They can be local minima, local maxima, or saddle points.
+- Optimization behavior depends on landscape curvature.
+
+#### 9. Stochastic Gradient Descent
+
+- SGD updates parameters from mini-batches instead of the full dataset.
+- It is faster per step and scales better to large datasets.
+- Noisy updates can help escape shallow local minima and saddle regions.
+
+#### 10. Learning Rate Scheduling
+
+- Learning rate scheduling changes alpha during training.
+- Common strategies: step decay, cosine decay, and warmup.
+- Good schedules improve stability and final model quality.
+
+#### 11. Maximizing Reward with Gradient Ascent
+
+- Gradient ascent is the maximizing counterpart of gradient descent.
+- Update rule: theta = theta + alpha * gradient.
+- Common in reinforcement learning when optimizing expected reward.
 
 **Tensors**:
 - It is ML generalization of scalar, vector [x1, x2, x3], matrix, 3-tensor, n-tensor
